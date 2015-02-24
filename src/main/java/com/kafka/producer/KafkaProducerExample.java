@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.Properties;
 import java.util.Random;
 
+import com.kafka.Constants;
+
 import kafka.javaapi.producer.Producer;
 import kafka.producer.KeyedMessage;
 import kafka.producer.ProducerConfig;
@@ -29,7 +31,7 @@ public class KafkaProducerExample {
                long runtime = new Date().getTime();  
                String ip = "192.168.2." + rnd.nextInt(255); 
                String msg = runtime + ",www.example.com," + ip;
-               KeyedMessage<String, String> data = new KeyedMessage<String, String>("test", ip, msg);
+               KeyedMessage<String, String> data = new KeyedMessage<String, String>(Constants.TOPIC_NAME, ip, msg);
                producer.send(data);
         }
 
