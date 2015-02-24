@@ -4,12 +4,15 @@ Caso não tenha um Apache Kafka instalado já, teremos que criar o nosso própri
 
 Passo 1: Faça o download do Kafka versão 0.8.2.0 <a href="https://www.apache.org/dyn/closer.cgi?path=/kafka/0.8.2.0/kafka_2.10-0.8.2.0.tgz"> nesse link </a>
 
-Após o Download descompacte o arquivo (tar -xzf kafka_2.10-0.8.2.0.tgz)
-Entre na pasta do Kafka (cd kafka_2.10-0.8.2.0)
+Após o Download descompacte o arquivo utilizando o comando:
+> tar -xzf kafka_2.10-0.8.2.0.tgz
+
+Entre na pasta do Kafka descompactada:
+> cd kafka_2.10-0.8.2.0
 
 Passo 2: Inicie o Servidor
 
-O kafka utiliza o zookeeper então antes você precisa iniciar o ZooKeeper Server, caso não tenha um utilize o que vem no kafka para ter uma instancia dele.
+O kafka utiliza o ZooKeeper então antes você precisa iniciar o ZooKeeper Server, caso não tenha um utilize o que vem no kafka para ter uma instancia dele.
 
 Execute o comando (dentro da pasta do kafka)
 > bin/zookeeper-server-start.sh config/zookeeper.properties
