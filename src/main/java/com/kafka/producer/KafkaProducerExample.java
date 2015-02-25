@@ -14,7 +14,7 @@ import kafka.producer.ProducerConfig;
 public class KafkaProducerExample {
 
 	public static void main(final String[] args) throws IOException {
-		long events = Long.parseLong("5");
+		long events = 5;
         Random rnd = new Random();
         Properties props = new Properties();
 
