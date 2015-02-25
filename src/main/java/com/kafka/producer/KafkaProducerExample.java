@@ -15,7 +15,7 @@ public class KafkaProducerExample {
 
 	public static void main(final String[] args) throws IOException {
 		long events = 5;
-        Random rnd = new Random();
+        Random random = new Random();
         Properties props = new Properties();
 
         props.put("metadata.broker.list", "localhost:9092");
@@ -29,10 +29,9 @@ public class KafkaProducerExample {
  
         for (long nEvents = 0; nEvents < events; nEvents++) { 
                long runtime = new Date().getTime();  
-               String ip = "192.168.2." + rnd.nextInt(255); 
+               String ip = "192.168.2." + random.nextInt(255); 
                String msg = runtime + ",www.example.com," + ip;
-               KeyedMessage<String, String> data = new KeyedMessage<String, String>(Constants.TOPIC_NAME, ip, msg);
-               producer.send(data);
+               producer.send(new KeyedMessage<String, String>(Constants.TOPIC_NAME, ip, msg));
         }
 
         producer.close();

@@ -133,6 +133,7 @@ public class KafkaConsumerExample {
 		TopicAndPartition topicAndPartition = new TopicAndPartition(topic, partition);
 		Map<TopicAndPartition, PartitionOffsetRequestInfo> requestInfo = new HashMap<TopicAndPartition, PartitionOffsetRequestInfo>();
 		requestInfo.put(topicAndPartition, new PartitionOffsetRequestInfo(whichTime, 1));
+
 		OffsetRequest request = new OffsetRequest(requestInfo, kafka.api.OffsetRequest.CurrentVersion(), clientName);
 		OffsetResponse response = consumer.getOffsetsBefore(request);
 
@@ -141,8 +142,7 @@ public class KafkaConsumerExample {
 			return 0;
 		}
 
-		long[] offsets = response.offsets(topic, partition);
-		return offsets[0];
+		return response.offsets(topic, partition)[0];
 	}
 
 	private String findNewLeader(String oldLeader, String topic, int partition, int port) throws Exception {
